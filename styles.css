@@ -45,6 +45,7 @@ body {
     color: var(--brand-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* ===================================
@@ -54,11 +55,12 @@ body {
     position: relative;
     background: var(--brand-yellow);
     min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xl) var(--spacing-md);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-content {
@@ -106,13 +108,67 @@ body {
     margin-right: auto;
 }
 
-.social-buttons-hero {
+.toggle-btn {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: 3px solid var(--brand-dark);
+    background: var(--white);
+    color: var(--brand-dark);
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 6px 6px 0 var(--brand-dark);
+}
+
+/* ===================================
+   Socials Section
+   =================================== */
+.socials-section {
+    position: relative;
+    background: var(--brand-yellow);
+    min-height: 100vh;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+    overflow-y: auto;
+}
+
+.socials-section.expanded {
     display: flex;
-    flex-direction: row;
+}
+
+.socials-content {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.social-buttons-list {
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-xl);
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: var(--spacing-xl) var(--spacing-sm);
+    padding-bottom: var(--spacing-2xl);
 }
 
 .social-btn {
@@ -120,7 +176,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
     font-family: var(--font-heading);
     font-size: 1.125rem;
     font-weight: 700;
@@ -130,13 +186,11 @@ body {
     color: var(--brand-dark);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     cursor: pointer;
-    flex: 1;
-    min-width: 0;
 }
 
 .social-btn:hover,
 .social-btn:focus {
-    transform: scale(1.05);
+    transform: translateY(-2px);
     box-shadow: 6px 6px 0 var(--brand-dark);
 }
 
@@ -147,6 +201,7 @@ body {
 .social-btn-youtube:hover { background: #FF0000; color: white; }
 .social-btn-tiktok:hover { background: #000000; color: white; }
 .social-btn-instagram:hover { background: #E4405F; color: white; }
+.social-btn-github:hover { background: #333333; color: white; }
 
 .hero-angle {
     position: absolute;
@@ -367,12 +422,6 @@ body {
 /* ===================================
    Responsive Design
    =================================== */
-@media (min-width: 768px) {
-    .social-btn {
-        flex: 1;
-        min-width: 160px;
-    }
-}
 
 @media (min-width: 1024px) {
     .hero-content {
