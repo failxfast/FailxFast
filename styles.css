@@ -120,7 +120,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
     font-family: var(--font-heading);
     font-size: 1.125rem;
     font-weight: 700;
@@ -130,6 +130,8 @@ body {
     color: var(--brand-dark);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     cursor: pointer;
+    flex: 1;
+    min-width: 0;
 }
 
 .social-btn:hover,
